@@ -1,7 +1,13 @@
-<cloudbees-web-app>
+<?xml version="1.0"?>
+<cloudbees-web-app xmlns="http://www.cloudbees.com/xml/webapp/1">     
+    <appid>supinbank</appid>
+    <context-param>
+        <param-name>application.environment</param-name>
+        <param-value>prod</param-value>
+    </context-param>
 	<resource name="jdbc/supinbank92807" auth="Container" type="javax.sql.DataSource">
-	 	<param name="username" value="92807" />
-	 	<param name="password" value="supinfo" />
-	 	<param name="url" value="jdbc:cloudbees://supinbank92807" />
+		 <param name="username" value="92807" />
+		 <param name="password" value="supinfo" />
+		 <param name="url" value="jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/supinbank92807" />
 	</resource>
 </cloudbees-web-app>

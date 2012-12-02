@@ -2,10 +2,12 @@
 	<persistence-unit name="supinBankPU" transaction-type="JTA">
 		
 		<!-- DataSource -->
+	    <provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>jdbc/supinbank92807</jta-data-source>
-	    <properties>
-	      	<property name="toplink.ddl-generation" value="create-tables" />
-	    </properties>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+		</properties>
 		
 	</persistence-unit>
 </persistence>
