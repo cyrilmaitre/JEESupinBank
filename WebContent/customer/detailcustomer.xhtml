@@ -14,7 +14,7 @@
          		Email: #{sessionManager.customerManaged.email}
          	</p>
        	</div>
-       	<h:link value="Add account" outcome="addaccount" styleClass="btn primary" style="margin-bottom: 20px;" rendered="#{sessionManager.isAdvisor()}"></h:link>
+       	<h:link value="Add account" outcome="addaccount" styleClass="btn primary" style="margin-bottom: 20px;" rendered="#{sessionManager.advisor}"></h:link>
 		<h:form>
 			<h:dataTable value="#{sessionManager.customerManaged.accounts}" var="account" binding="#{detailcustomer.dataTable}">
 				<h:column>

@@ -25,6 +25,8 @@ public class SessionManager implements Serializable
 	private Customer customerManaged = null;
 	private boolean customerManagedShouldBeAdded = false;
 	private Account accountManaged = null;
+	private boolean advisor = false;
+	private boolean customer = false;
 		
 	
 	//********************
@@ -72,18 +74,14 @@ public class SessionManager implements Serializable
 	
 	public boolean isAdvisor()
 	{
-		if(this.userAuthenticated != null && userAuthenticated instanceof Advisor)
-			return true;
-		else
-			return false;
+		this.advisor = this.userAuthenticated != null && userAuthenticated instanceof Advisor;
+		return this.advisor;
 	}
 	
 	public boolean isCustomer()
 	{
-		if(this.userAuthenticated != null && userAuthenticated instanceof Customer)
-			return true;
-		else
-			return false;
+		this.customer = this.userAuthenticated != null && userAuthenticated instanceof Customer;
+		return this.customer;
 	}
 	
 

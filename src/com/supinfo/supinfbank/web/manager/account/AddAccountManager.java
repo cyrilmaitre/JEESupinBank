@@ -83,7 +83,6 @@ public class AddAccountManager implements Serializable
 			
 			this.account.setCustomer(this.getSessionManager().getCustomerManaged());
 			this.account = this.daoFactory.getAccountDao().addAccount(this.account);
-			this.getSessionManager().getCustomerManaged().getAccounts().add(this.account); // Try use em.refresh
 			return "detailcustomer";
 		}
 		return null;

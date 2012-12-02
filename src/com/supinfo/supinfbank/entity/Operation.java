@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -36,7 +35,6 @@ public class Operation implements Serializable
 	private String wording;
 	
 	@Digits(fraction = 2, integer = 8, message = "Must be a number")
-	@DecimalMin(value = "1", message = "Amount must be greater than 0")
 	private double amount;
 	
 	@Temporal(TemporalType.DATE)
