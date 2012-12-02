@@ -1,0 +1,59 @@
+<ui:composition 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/default_template.xhtml">
+	
+  <ui:define name="titre">SupinBank - Account's detail</ui:define>
+  <ui:define name="body">
+   		<div class="page-header">
+         	<h1>
+         		Operations of #{sessionManager.accountManaged.name}
+         	</h1>
+         	<p>
+         		Customer: #{sessionManager.customerManaged.firstName} #{sessionManager.customerManaged.lastName}
+         	</p>
+       	</div>
+       	<h:form>
+       		<h:outputLabel value="Select your account:" for="accounts"></h:outputLabel>
+			<h:selectOneMenu id="accounts" value="#{sessionManager.accountManaged}" converter="#{accountConverter}" onchange="submit()" style="margin-left: 5px;">
+				<f:selectItems value="#{sessionManager.customerManaged.accounts}" />
+		    </h:selectOneMenu>
+		</h:form>
+		<h:form rendered="#{!empty sessionManager.accountManaged.operations}">
+			<h:dataTable value="#{sessionManager.accountManaged.operations}" var="operation">
+				<h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Id" />
+		            </f:facet>
+		            <h:outputText value="#{operation.idOperation}"> </h:outputText>
+		        </h:column>
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Date" />
+		            </f:facet>
+		            <h:outputText value="#{operation.date.time}"> 
+		            	<f:convertDateTime dateStyle="medium" />
+		            </h:outputText>
+		        </h:column>
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Wording" />
+		            </f:facet>
+		            <h:outputText value="#{operation.wording}"></h:outputText>
+		        </h:column>
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Amount" />
+		            </f:facet>
+		            <h:outputText value="#{operation.amount}"></h:outputText>
+		        </h:column>
+		    </h:dataTable>
+		</h:form>
+		
+		<h:panelGroup layout="block" rendered="#{empty sessionManager.accountManaged.operations}">
+    		No operation for this account ! 
+   		</h:panelGroup>	
+				
+  	</ui:define>
+</ui:composition>

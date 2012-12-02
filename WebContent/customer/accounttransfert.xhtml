@@ -1,0 +1,53 @@
+<ui:composition 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/default_template.xhtml">
+	
+  <ui:define name="titre">SupinBank - Account transfert</ui:define>
+  <ui:define name="body">
+   		<div class="page-header">
+         	<h1>
+         		Perform a transfert
+         	</h1>
+         	<p>
+         		Customer: #{sessionManager.customerManaged.firstName} #{sessionManager.customerManaged.lastName}
+         	</p>
+       	</div>
+		<h:form id="myform">
+		    <h:outputLabel value="Select your From account:" for="accountsFrom" styleClass="defaultLabel"></h:outputLabel>
+		    <div class="clearfix">
+				<h:selectOneMenu id="accountsFrom" value="#{accountTransfert.accountSender}" converter="#{accountConverter}">
+					<f:selectItems value="#{sessionManager.customerManaged.accounts}" />
+			    </h:selectOneMenu>
+			    <h:message for="accountsFrom" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+		    
+		    <h:outputLabel value="Select your To account:" for="accountsTo" styleClass="defaultLabel"></h:outputLabel>
+		    <div class="clearfix">
+				<h:selectOneMenu id="accountsTo" value="#{accountTransfert.accountReceiver}" converter="#{accountConverter}" >
+					<f:selectItems value="#{sessionManager.customerManaged.accounts}" />
+			    </h:selectOneMenu>
+		    </div>
+		    
+		    <h:outputLabel value="Wording:" for="wording" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="wording" value="#{accountTransfert.operation.wording}" styleClass="xlarge"></h:inputText>
+				<h:message for="wording" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+
+			<h:outputLabel value="Amount:" for="amount" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="amount" value="#{accountTransfert.operation.amount}" styleClass="xlarge"></h:inputText>
+				<h:message for="amount" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+					
+			<h:outputLabel value="" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:commandButton action="#{accountTransfert.submit}" value="Perform transfert" styleClass="btn primary" style="margin-top: 25px;"/>
+				<h:commandButton action="#{accountTransfert.cancel}" immediate="true" value="Cancel" styleClass="btn" style="margin-top: 25px; margin-left: 10px;"/>
+			</div>
+		</h:form>
+				
+  	</ui:define>
+</ui:composition>

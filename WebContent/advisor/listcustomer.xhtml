@@ -1,0 +1,38 @@
+<ui:composition 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/default_template.xhtml">
+	
+  <ui:define name="titre">SupinBank - Customer List</ui:define>
+  <ui:define name="body">
+   		<div class="page-header">
+         	<h1>
+         		Customer List
+         	</h1>
+       	</div>
+		<h:form>
+			<h:dataTable value="#{listCustomer.customers}" var="customer" binding="#{listCustomer.dataTable}">
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Name" />
+		            </f:facet>
+		            <h:outputText value="#{customer.firstName} #{customer.lastName}"> </h:outputText>
+		        </h:column>
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Email" />
+		            </f:facet>
+		            <h:outputText value="#{customer.email}"></h:outputText>
+		        </h:column>
+				<h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Action" />
+		            </f:facet>
+		            <h:commandLink value="Details" action="#{listCustomer.showDetail}"/>
+		        </h:column>
+		    </h:dataTable>
+		</h:form>
+		
+  	</ui:define>
+</ui:composition>

@@ -1,0 +1,61 @@
+<ui:composition 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	template="/templates/default_template.xhtml">
+	
+  <ui:define name="titre">SupinBank - Add customer</ui:define>
+  <ui:define name="body">
+   		<div class="page-header">
+         	<h1>Add customer</h1>
+       	</div>
+		<h:form>
+			<h:outputLabel value="First Name:" for="firstname" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="firstname" value="#{addCustomer.customer.firstName}" styleClass="xlarge"></h:inputText>
+				<h:message for="firstname" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="Last Name:" for="lastname" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="lastname" value="#{addCustomer.customer.lastName}" styleClass="xlarge"></h:inputText>
+				<h:message for="lastname" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="Email:" for="email" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="email" value="#{addCustomer.customer.email}" styleClass="xlarge"></h:inputText>
+				<h:message for="email" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="Adresse:" for="adresse" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="adresse" value="#{addCustomer.customer.adresse}" styleClass="xlarge"></h:inputText>
+				<h:message for="adresse" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="Zip Code:" for="zipcode" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="zipcode" value="#{addCustomer.customer.zipCode}" styleClass="xlarge"></h:inputText>
+				<h:message for="zipcode" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="City:" for="city" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="city" value="#{addCustomer.customer.city}" styleClass="xlarge"></h:inputText>
+				<h:message for="city" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="Phone:" for="phone" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="phone" value="#{addCustomer.customer.phone}" styleClass="xlarge"></h:inputText>
+				<h:message for="phone" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:commandButton action="#{addCustomer.nextStep}" value="Add Customer" styleClass="btn primary" style="margin-top: 25px"/>
+			</div>
+		</h:form>
+		
+  	</ui:define>
+</ui:composition>

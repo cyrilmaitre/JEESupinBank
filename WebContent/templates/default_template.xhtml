@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet"/>
+	    <link href="#{request.contextPath}/css/design.css" rel="stylesheet"/>
+		<title>
+			<ui:insert name="title">SupinBank</ui:insert>
+		</title>
+	</h:head>
+	<h:body>
+	
+		<div class="topbar">
+		  	<div class="fill">
+		    	<div class="container">
+		    		<h:link styleClass="brand" value="SupinBank" outcome="index"></h:link>
+                	<ul class="nav">
+                		<h:panelGroup layout="block" rendered="#{sessionManager.isAdvisor()}">
+	                		<li>
+	                			<h:link value="List customers" outcome="listcustomer"></h:link>
+	                    	</li> 
+	                    	<li>
+	                    		<h:link value="Add customer" outcome="addcustomer"></h:link>
+	                    	</li>
+                		</h:panelGroup>	
+                		
+                		<h:panelGroup layout="block" rendered="#{sessionManager.isCustomer()}">
+	                		<li>
+	                			<h:link value="List accounts" outcome="detailcustomer"></h:link>
+	                    	</li> 
+	                    	<li>
+	                    		<h:link value="Perform a transfert" outcome="maketransfert"></h:link>
+	                    	</li>
+                		</h:panelGroup>	
+					</ul>
+					<h:form styleClass="pull-right" rendered="#{empty sessionManager.userAuthenticated}">
+						<h:outputText styleClass="text-error" rendered="#{auth.authenticationFailed}" value="Bad credientials"></h:outputText>
+               	  		Email: <h:inputText id="email" value="#{auth.email}" styleClass="input-medium"></h:inputText>
+               	  		Password: <h:inputSecret id="password" value="#{auth.password}" styleClass="input-small"></h:inputSecret>
+					  	<h:commandButton action="#{auth.login}" value="Login" />
+					</h:form>
+					<h:form styleClass="pull-right" rendered="#{!empty sessionManager.userAuthenticated}">
+						<h:commandButton value="Logout" action="#{auth.logout}"></h:commandButton>
+					</h:form>
+		    	</div>
+		  	</div>
+		</div>
+		
+ 		<div class="container">
+   			<div class="content">
+   				<ui:insert name="body"></ui:insert>
+   			</div>
+   			<div class="footer">
+        		<p>&copy; SupinBank - MAITRE Cyril - 92807</p>
+      		</div>
+   		</div>
+   		
+	</h:body>
+</html>
+
+

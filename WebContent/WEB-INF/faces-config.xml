@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+      http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+   version="2.0">
+   
+   <!-- Navigation Rules -->
+   	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>addcustomer</from-outcome>
+   			<to-view-id>/advisor/addcustomer.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>index</from-outcome>
+   			<to-view-id>/index.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>addaccount</from-outcome>
+   			<to-view-id>/advisor/addaccount.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>listcustomer</from-outcome>
+   			<to-view-id>/advisor/listcustomer.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>detailcustomer</from-outcome>
+   			<to-view-id>/customer/detailcustomer.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>addmoney</from-outcome>
+   			<to-view-id>/advisor/addmoney.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>detailaccount</from-outcome>
+   			<to-view-id>/customer/detailaccount.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+   		<from-view-id>*</from-view-id>
+   		<navigation-case>
+   			<from-outcome>maketransfert</from-outcome>
+   			<to-view-id>/customer/accounttransfert.xhtml</to-view-id>
+   		</navigation-case>
+	</navigation-rule>
+	
+	
+	<!-- Converters -->
+	<converter>
+    	<converter-id>accountTypeConverter</converter-id>
+   	 	<converter-class>com.supinfo.supinfbank.web.converter.AccountTypeConverter</converter-class>
+	</converter>
+	
+	<converter>
+    	<converter-id>accountConverter</converter-id>
+   	 	<converter-class>com.supinfo.supinfbank.web.converter.AccountConverter</converter-class>
+	</converter>
+
+</faces-config>

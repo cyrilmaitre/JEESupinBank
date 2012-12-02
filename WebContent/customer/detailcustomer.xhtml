@@ -1,0 +1,60 @@
+<ui:composition 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/default_template.xhtml">
+	
+  <ui:define name="titre">SupinBank - Customer's accounts</ui:define>
+  <ui:define name="body">
+   		<div class="page-header">
+         	<h1>
+         		#{sessionManager.customerManaged.firstName} #{sessionManager.customerManaged.lastName} accounts
+         	</h1>
+         	<p>
+         		Email: #{sessionManager.customerManaged.email}
+         	</p>
+       	</div>
+       	<h:link value="Add account" outcome="addaccount" styleClass="btn primary" style="margin-bottom: 20px;" rendered="#{sessionManager.isAdvisor()}"></h:link>
+		<h:form>
+			<h:dataTable value="#{sessionManager.customerManaged.accounts}" var="account" binding="#{detailcustomer.dataTable}">
+				<h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Id" />
+		            </f:facet>
+		            <h:outputText value="#{account.idAccount}"> </h:outputText>
+		        </h:column>
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Name" />
+		            </f:facet>
+		            <h:outputText value="#{account.name}"> </h:outputText>
+		        </h:column>
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Balance" />
+		            </f:facet>
+		            <h:outputText value="#{account.balance}"></h:outputText>
+		        </h:column>
+		        <h:column>
+		            <f:facet name="header">
+		                <h:outputText value="Account Type" />
+		            </f:facet>
+		            <h:outputText value="#{account.accountType.name}"></h:outputText>
+		        </h:column>
+				<h:column rendered="#{sessionManager.isAdvisor()}">
+		            <f:facet name="header">
+		                <h:outputText value="Action" />
+		            </f:facet>
+		            <h:commandLink value="Add money" action="#{detailcustomer.addMoney}"/>
+		        </h:column>
+		        <h:column rendered="#{sessionManager.isCustomer()}">
+		            <f:facet name="header">
+		                <h:outputText value="Action" />
+		            </f:facet>
+		            <h:commandLink value="Detail operations" action="#{detailcustomer.showOperations}"/>
+		        </h:column>
+		    </h:dataTable>
+		</h:form>
+		
+  	</ui:define>
+</ui:composition>

@@ -1,0 +1,37 @@
+<ui:composition 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/default_template.xhtml">
+	
+  <ui:define name="titre">SupinBank - Add account</ui:define>
+  <ui:define name="body">
+   		<div class="page-header">
+         	<h1>
+         		Add account to #{sessionManager.customerManaged.firstName} #{sessionManager.customerManaged.lastName}
+         	</h1>
+       	</div>
+		<h:form>
+			<h:outputLabel value="Name:" for="name" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:inputText id="name" value="#{addAccount.account.name}" styleClass="xlarge"></h:inputText>
+				<h:message for="name" styleClass="text-error" style="margin-left: 20px"/>
+			</div>
+			
+			<h:outputLabel value="Account Type:" for="accountype" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:selectOneMenu id="accountype" value="#{addAccount.account.accountType}" converter="#{accountTypeConverter}">
+					<f:selectItems value="#{accountType.accountTypes}" />
+			    </h:selectOneMenu>
+			    <h:message for="accountype" styleClass="text-error" style="margin-left: 20px"/>
+			</div>		
+					
+			<h:outputLabel value="" styleClass="defaultLabel"></h:outputLabel>
+			<div class="clearfix">
+				<h:commandButton action="#{addAccount.submit}" value="Add Account" styleClass="btn primary" style="margin-top: 25px;"/>
+				<h:commandButton action="#{addAccount.cancel}" immediate="true" value="Cancel" styleClass="btn" style="margin-top: 25px; margin-left: 10px;"/>
+			</div>
+		</h:form>
+		
+  	</ui:define>
+</ui:composition>
