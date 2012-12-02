@@ -1,0 +1,7 @@
+<cloudbees-web-app>
+	<resource name="jdbc/supinbank92807" auth="Container" type="javax.sql.DataSource">
+	 	<param name="username" value="92807" />
+	 	<param name="password" value="supinfo" />
+	 	<param name="url" value="jdbc:cloudbees://supinbank92807" />
+	</resource>
+</cloudbees-web-app>
