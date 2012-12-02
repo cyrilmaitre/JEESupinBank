@@ -41,13 +41,13 @@
 		            </f:facet>
 		            <h:outputText value="#{account.accountType.name}"></h:outputText>
 		        </h:column>
-				<h:column rendered="#{sessionManager.isAdvisor()}">
+				<h:column rendered="#{sessionManager.advisor}">
 		            <f:facet name="header">
 		                <h:outputText value="Action" />
 		            </f:facet>
 		            <h:commandLink value="Add money" action="#{detailcustomer.addMoney}"/>
 		        </h:column>
-		        <h:column rendered="#{sessionManager.isCustomer()}">
+		        <h:column rendered="#{sessionManager.customer}">
 		            <f:facet name="header">
 		                <h:outputText value="Action" />
 		            </f:facet>

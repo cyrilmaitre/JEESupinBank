@@ -17,7 +17,7 @@
 		    	<div class="container">
 		    		<h:link styleClass="brand" value="SupinBank" outcome="index"></h:link>
                 	<ul class="nav">
-                		<h:panelGroup layout="block" rendered="#{sessionManager.isAdvisor()}">
+                		<h:panelGroup layout="block" rendered="#{sessionManager.advisor}">
 	                		<li>
 	                			<h:link value="List customers" outcome="listcustomer"></h:link>
 	                    	</li> 
@@ -26,7 +26,7 @@
 	                    	</li>
                 		</h:panelGroup>	
                 		
-                		<h:panelGroup layout="block" rendered="#{sessionManager.isCustomer()}">
+                		<h:panelGroup layout="block" rendered="#{sessionManager.customer}">
 	                		<li>
 	                			<h:link value="List accounts" outcome="detailcustomer"></h:link>
 	                    	</li> 

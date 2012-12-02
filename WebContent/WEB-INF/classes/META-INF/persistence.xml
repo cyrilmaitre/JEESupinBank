@@ -3,11 +3,8 @@
 		
 		<!-- DataSource -->
 		<jta-data-source>jdbc/supinbank92807</jta-data-source>
-	    <provider>
-	      	org.hibernate.ejb.HibernatePersistence
-	    </provider>
 	    <properties>
-	      	<property name="hibernate.hbm2ddl.auto" value="update"/>
+	      	<property name="toplink.ddl-generation" value="create-tables" />
 	    </properties>
 		
 	</persistence-unit>
