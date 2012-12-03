@@ -15,10 +15,13 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "supinbank_operation")
+@XmlRootElement(name = "Advisor")
 public class Operation implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -29,19 +32,24 @@ public class Operation implements Serializable
 	//********************
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@XmlElement(name = "idOperation")
 	private int idOperation;
 	
 	@NotNull @Size(min = 1, message = "Wording is required")
+	@XmlElement(name = "wording")
 	private String wording;
 	
 	@Digits(fraction = 2, integer = 8, message = "Must be a number")
+	@XmlElement(name = "amount")
 	private double amount;
 	
 	@Temporal(TemporalType.DATE)
+	@XmlElement(name = "date")
 	private Calendar date;
 	
 	@ManyToOne
     @JoinColumn(name="idAccount")
+	@XmlElement(name = "account")
     private Account account;
 
 	

@@ -17,11 +17,6 @@
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
   
-  <context-param>
-    <param-name>javax.faces.PROJECT_STAGE</param-name>
-    <param-value>Development</param-value>
-  </context-param>
-  
   <servlet>
   	<servlet-name>Resteasy</servlet-name>
   	<servlet-class>   
@@ -35,7 +30,13 @@
   
   <context-param>
   	<param-name>resteasy.resources</param-name>
-  	<param-value>com.supinfo.supinfbank.rest.UserResource</param-value>
+  	<param-value>
+  		com.supinfo.supinfbank.rest.UserResource, 
+  		com.supinfo.supinfbank.rest.AccountResource,
+  		com.supinfo.supinfbank.rest.AccountTypeResource,
+  		com.supinfo.supinfbank.rest.CustomerResource,
+  		com.supinfo.supinfbank.rest.OperationResource
+    </param-value>
   </context-param>
   
   <context-param>

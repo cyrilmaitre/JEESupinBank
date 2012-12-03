@@ -7,6 +7,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -14,6 +16,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "supinbank_customer")
+@XmlRootElement(name = "Customer")
 public class Customer extends User
 {
 	private static final long serialVersionUID = 1L;
@@ -23,25 +26,32 @@ public class Customer extends User
 	// Attributes
 	//********************
 	@NotNull @Size(min = 1, message = "First Name is required")
+	@XmlElement(name = "firstName")
 	private String firstName;
 	
 	@NotNull @Size(min = 1, message = "Last Name is required")
+	@XmlElement(name = "lastName")
 	private String lastName;
 	
 	@NotNull @Size(min = 1, message = "Adresse is required")
+	@XmlElement(name = "adresse")
 	private String adresse;
 	
 	@NotNull @Size(min = 1, message = "Zip Code is required")
+	@XmlElement(name = "zipCode")
 	private String zipCode;
 	
 	@NotNull @Size(min = 1, message = "City is required")
+	@XmlElement(name = "city")
 	private String city;
 	
 	@NotNull @Size(min = 1, message = "Phone is required")
+	@XmlElement(name = "phone")
 	private String phone;
 	
 	@OneToMany(mappedBy = "customer")
 	@LazyCollection(LazyCollectionOption.FALSE)
+	@XmlElement(name = "accounts")
     private Collection<Account> accounts;
 	
 	

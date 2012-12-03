@@ -7,10 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "supinbank_accounttype")
+@XmlRootElement(name="AccountType")
 public class AccountType implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -21,8 +24,10 @@ public class AccountType implements Serializable
 	//********************
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@XmlElement(name = "idAccountType")
 	private int idAccountType;
 	
+	@XmlElement(name = "name")
 	private String name;
 	
 	

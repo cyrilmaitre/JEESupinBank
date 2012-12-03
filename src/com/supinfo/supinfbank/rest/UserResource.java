@@ -1,33 +1,29 @@
 package com.supinfo.supinfbank.rest;
 
-import javax.ws.rs.GET;
+import javax.ejb.EJB;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
+import com.supinfo.supinfbank.dao.DaoFactory;
+import com.supinfo.supinfbank.entity.User;
 
 
 @Path("/user")
 public class UserResource 
 {
-	@GET 
-	@Path("/authenticate")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String checkConnectivity()
+	@EJB private DaoFactory daoFactory;
+	
+	public UserResource() throws NamingException 
 	{
-		JSONObject response = new JSONObject();
-		
-		try 
-		{
-			response.put("plop", "ok");
-		} 
-		catch (JSONException e) 
-		{
-			e.printStackTrace();
-		}
-		
-		return response.toString();
+        this.daoFactory = (DaoFactory) (new InitialContext()).lookup("java:global/app/webapp/DaoFactory!com.supinfo.supinfbank.dao.DaoFactory");
+	}
+	
+	@POST
+	@Path("/authenticate")
+	public User authenticate(User user)
+	{
+		return this.daoFactory.getUserDao().authenticate(user);
 	}
 }

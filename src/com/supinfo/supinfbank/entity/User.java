@@ -11,6 +11,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -18,6 +20,7 @@ import org.hibernate.validator.constraints.Email;
 @Entity
 @Inheritance (strategy=InheritanceType.JOINED)
 @Table(name = "supinbank_user")
+@XmlTransient
 public class User implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -28,11 +31,14 @@ public class User implements Serializable
 	//********************
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@XmlElement(name = "idUser")
 	private int idUser;
 	
 	@NotNull @Size(min = 1, message = "Email is required")
 	@Email(message = "Email format invalid")
+	@XmlElement(name = "email")
 	private String email;
+	
 	private String password;
 	
 	

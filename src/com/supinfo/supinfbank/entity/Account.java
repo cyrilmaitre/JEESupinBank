@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -23,6 +25,7 @@ import com.supinfo.supinfbank.util.ToolsBank;
 
 @Entity
 @Table(name = "supinbank_account")
+@XmlRootElement(name = "Account")
 public class Account implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -33,27 +36,34 @@ public class Account implements Serializable
 	//********************
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@XmlElement(name = "idAccount")
 	private int idAccount;
 	
 	@NotNull @Size(min = 1, message = "Name is required")
+	@XmlElement(name = "name")
 	private String name;
 	
 	@Digits(fraction = 2, integer = 8, message = "Must be a number")
+	@XmlElement(name = "balance")
 	private double balance;
 	
+	@XmlElement(name = "bban")
 	private String bban;
 	
 	@ManyToOne
     @JoinColumn(name="idUser")
+	@XmlElement(name = "customer")
     private Customer customer;
 	
 	@ManyToOne
     @JoinColumn(name="idAccountType")
 	@NotNull(message = "Account Type is required")
+	@XmlElement(name = "accounttype")
     private AccountType accountType;
 	
 	@OneToMany(mappedBy = "account")
 	@LazyCollection(LazyCollectionOption.FALSE)
+	@XmlElement(name = "operations")
     private Collection<Operation> operations;	
 	
 	
